@@ -1,14 +1,45 @@
-# NPM Module Boilerplate
+# Transverse Nested
 
-[![Build Status](https://travis-ci.org/flexdinesh/npm-module-boilerplate.svg?branch=master)](https://travis-ci.org/flexdinesh/npm-module-boilerplate) [![dependencies Status](https://david-dm.org/flexdinesh/npm-module-boilerplate/status.svg)](https://david-dm.org/flexdinesh/npm-module-boilerplate) [![devDependencies Status](https://david-dm.org/flexdinesh/npm-module-boilerplate/dev-status.svg)](https://david-dm.org/flexdinesh/npm-module-boilerplate?type=dev) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-**Start developing your NPM module in seconds** ✨
+**Get nested properties from your objects** ✨
 
-Readymade boilerplate setup with all the best practices to kick start your npm/node module development.
+Transverse nested properties of your object. Can return an individual property (leaf), or a section of the object (node).
 
-Happy hacking =)
 
-# Features
+# Installation
+Run `npm i transverse-nested` or `yarn add transverse-nested`
+
+# Usage
+
+The transverse-nested module exports a single default function, that takes the object to be transversed, and a string of properties to transverse (the path to be transversed by the function).
+
+Example
+
+```javascript
+const transverse = require("transverse-nested") 
+// Or 'import transverse from "transverse-nested"' if es6+
+
+const obj = {
+  data: {
+    user: {
+      details: {
+        name: John Doe",
+        email: "john.doe@mail.com"
+      }
+    }
+  }
+}
+
+const name = transverse(obj, "data.user.details.name")
+
+//You can even use destructuring
+
+const { name: otherName, email } = transverse(obj, "data.user.details")
+
+```
+
+# Development
 
 * **ES6/ESNext** - Write _ES6_ code and _Babel_ will transpile it to ES5 for backwards compatibility
 * **Test** - _Mocha_ with _Istanbul_ coverage
@@ -16,7 +47,7 @@ Happy hacking =)
 * **CI** - _TravisCI_ configuration setup
 * **Minify** - Built code will be minified for performance
 
-# Commands
+# Development Commands
 - `npm run clean` - Remove `lib/` directory
 - `npm test` - Run tests with linting and coverage results.
 - `npm test:only` - Run tests without linting or coverage.
@@ -28,10 +59,6 @@ Happy hacking =)
 - `npm run build` - Babel will transpile ES6 => ES5 and minify the code.
 - `npm run prepublish` - Hook for npm. Do all the checks before publishing your module.
 
-# Installation
-Just clone this repo and remove `.git` folder.
-
-
 # License
 
-MIT © Dinesh Pandiyan
+MIT © Nelson Mbau
