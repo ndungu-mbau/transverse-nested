@@ -1,11 +1,10 @@
+/* eslint-disable no-nested-ternary */
 const transverse = (obj, prop) => {
-  const propList = prop.split('.')
-  const final = propList.reduce((val, curr) => {
-      return val !== undefined ? val[curr] : typeof val !== 'object' ? undefined : {}
-  },obj)
+  const propList = prop.split('.');
+  const final = propList.reduce((val, curr) => (val !== undefined ? val[curr] : typeof val !== 'object' ? undefined : {}), obj);
 
-  return final
-}
+  return final;
+};
 
 
-export default transverse
+export default transverse;
